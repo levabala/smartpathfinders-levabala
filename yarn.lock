@@ -341,6 +341,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/keypress@^2.0.30":
+  version "2.0.30"
+  resolved "https://registry.yarnpkg.com/@types/keypress/-/keypress-2.0.30.tgz#b55c4f63b58970b30c7b8cb63f25af14a3dbda8d"
+  integrity sha512-PCS6Mrv4gbQ9167E25nuVmqerT4xM/zWuVFTLfHdQgBwmsfMj2kXR1DI3qZ5N3p21gbrPweRghci2CjMHRCWkA==
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
@@ -350,6 +355,11 @@
   version "12.6.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.2.tgz#a5ccec6abb6060d5f20d256fb03ed743e9774999"
   integrity sha512-gojym4tX0FWeV2gsW4Xmzo5wxGjXGm550oVUII7f7G5o4BV6c7DBdiG1RRQd+y1bvqRyYtPfMK85UM95vsapqQ==
+
+"@types/readline-sync@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@types/readline-sync/-/readline-sync-1.4.3.tgz#eac55a39d5a349912062c9e5216cd550c07fd9c8"
+  integrity sha512-YP9NVli96E+qQLAF2db+VjnAUEeZcFVg4YnMgr8kpDUFwQBnj31rPLOVHmazbKQhaIkJ9cMHsZhpKdzUeL0KTg==
 
 JSONStream@^1.0.4:
   version "1.3.5"
@@ -1710,6 +1720,13 @@ generate-maze-ts@^1.0.0:
   dependencies:
     lodash "^4.17.14"
 
+generate-maze-ts@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/generate-maze-ts/-/generate-maze-ts-1.0.6.tgz#80a02f6f3503e5630f390b7f62771534d1835bac"
+  integrity sha512-gwx6DA7CtQh0GC01gwAZsanwmTNk2UhmVe+56UAmt1jgO/R/qowunzraYgMLAeX9VVadiEyDbZd5lVRncWjwpw==
+  dependencies:
+    lodash "^4.17.14"
+
 get-caller-file@^2.0.1:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
@@ -2384,6 +2401,11 @@ jsonparse@^1.2.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/jsonparse/-/jsonparse-1.3.1.tgz#3f4dae4a91fac315f71062f8521cc239f1366280"
   integrity sha1-P02uSpH6wxX3EGL4UhzCOfE2YoA=
+
+keypress@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/keypress/-/keypress-0.2.1.tgz#1e80454250018dbad4c3fe94497d6e67b6269c77"
+  integrity sha1-HoBFQlABjbrUw/6USX1uZ7YmnHc=
 
 keyv@^3.0.0:
   version "3.1.0"
@@ -3649,10 +3671,10 @@ slice-ansi@^2.1.0:
     astral-regex "^1.0.0"
     is-fullwidth-code-point "^2.0.0"
 
-smartpathfinders@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/smartpathfinders/-/smartpathfinders-1.0.2.tgz#1c0742fdeecef751a25e128ff73928be0ea1e776"
-  integrity sha512-VEA2+b6DSQ/y7ZFzbBKxKhcUZ4aqLBgOTdi1DNuCdv9gbif5gyZQ6E0CClKgPE8Jt82rFhzCu38jzEhsK9AsjQ==
+smartpathfinders@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/smartpathfinders/-/smartpathfinders-1.0.8.tgz#6ae5647cc5042ef323bd287b5873f2f47d1a0d73"
+  integrity sha512-JX9658FNvnb/cnZmhuyF6v0Dehx0poeUscrY4g6mm0RkQMFrjHDcKBQMO/iLmB/lFgGMswborI/SbeO3YXX3tQ==
   dependencies:
     generate-maze-ts "^1.0.0"
 

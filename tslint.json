@@ -32,6 +32,8 @@
     "no-if-statement": true,
     /* end tslint-immutable rules */
 
-    "no-console": false
+    "no-console": false,
+    "no-var-requires": false,
+    "curly": [true, "as-needed"]
   }
 }
