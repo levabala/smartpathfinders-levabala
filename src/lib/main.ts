@@ -1,20 +1,11 @@
 /* tslint:disable:no-expression-statement no-if-statement no-let*/
 import { Direction } from 'generate-maze-ts';
-import {
-  createFinder,
-  createRoom,
-  exploredMapToMaze,
-  mazeToStrings,
-  p2d,
-  Result,
-  sumDeltas,
-  tryMoveFinder,
-} from 'smartpathfinders';
+import { createFinder, createRoom, exploredMapToStrings, mazeToStrings, Result, tryMoveFinder } from 'smartpathfinders';
 
 const keypress = require('keypress');
 
 const finder = createFinder({ id: 0 });
-let room = createRoom(10, [{ finder, position: { x: 0, y: 0 } }], 'myseed');
+let room = createRoom(10, [{ finder, position: { x: 3, y: 5 } }], 'myseed');
 let result: Result;
 
 console.log(mazeToStrings(room.maze, room.positions).join('\n'));
@@ -34,16 +25,16 @@ function move(direction: Direction): void {
     0
   );
   console.log({ knownBoxes });
-  // console.log(exploredMapToStrings(room.finders[0].exploredMap).join('\n'));
-  console.log(
-    mazeToStrings(
-      exploredMapToMaze(
-        room.finders[0].exploredMap,
-        sumDeltas(room.finders[0].exploredMapOffset, p2d(room.positions[0])),
-        room.maze
-      )
-    ).join('\n')
-  );
+  console.log(exploredMapToStrings(room.finders[0].exploredMap).join('\n'));
+  // console.log(
+  //   mazeToStrings(
+  //     exploredMapToMaze(
+  //       room.finders[0].exploredMap,
+  //       sumDeltas(room.finders[0].exploredMapOffset, p2d(room.positions[0])),
+  //       room.maze
+  //     )
+  //   ).join('\n')
+  // );
 }
 
 process.stdin.on(
