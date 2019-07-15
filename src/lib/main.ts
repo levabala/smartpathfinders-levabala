@@ -14,7 +14,7 @@ import {
 const keypress = require('keypress');
 
 const finder = createFinder({ id: 0 });
-let room = createRoom(10, [{ finder, position: { x: 3, y: 5 } }], 'myseed');
+let room = createRoom(10, [{ finder, position: { x: 0, y: 0 } }], 'myseed');
 let result: Result;
 
 console.log(mazeToStrings(room.maze, room.positions).join('\n'));
@@ -30,10 +30,11 @@ function move(direction: Direction): void {
   console.log(result);
 
   const knownBoxes = room.finders[0].exploredMap.reduce(
-    (acc, val) => acc + val.reduce((acc2, val2) => acc2 + (val2 ? 0 : 1), 0),
+    (acc, val) => acc + val.reduce((acc2, val2) => acc2 + (val2 ? 1 : 0), 0),
     0
   );
   console.log({ knownBoxes });
+  // console.log(exploredMapToStrings(room.finders[0].exploredMap).join('\n'));
   console.log(
     mazeToStrings(
       exploredMapToMaze(
