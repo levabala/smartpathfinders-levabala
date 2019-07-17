@@ -1,75 +1,54 @@
-/* tslint:disable:no-expression-statement no-if-statement no-let*/
 import { Direction } from 'generate-maze-ts';
-import { createFinder, createRoom, exploredMapToStrings, mazeToStrings, Result, tryMoveFinder } from 'smartpathfinders';
+import { usleep } from 'sleep';
+import {
+  createFinder,
+  createRoom,
+  FinderProcessor,
+  mazeToStrings,
+  random,
+  runSimulation,
+  WholeTickCallback,
+} from 'smartpathfinders';
 
-const keypress = require('keypress');
+console.log('Start Simulation');
 
-const finder = createFinder({ id: 0 });
-let room = createRoom(10, [{ finder, position: { x: 3, y: 5 } }], 'myseed');
-let result: Result;
+const finder1 = createFinder({ id: 0 });
+const finder2 = createFinder({ id: 1 });
+const finder3 = createFinder({ id: 2 });
+const room = createRoom(20, 10, [
+  { finder: finder1, position: { x: 3, y: 5 } },
+  { finder: finder2, position: { x: 1, y: 2 } },
+  { finder: finder3, position: { x: 4, y: 7 } }
+]);
 
-console.log(mazeToStrings(room.maze, room.positions).join('\n'));
-console.log();
-console.log(finder.exploredMap);
-
-keypress(process.stdin);
-
-function move(direction: Direction): void {
-  [result, room] = tryMoveFinder(room, room.finders[0], direction);
-
-  console.log(mazeToStrings(room.maze, room.positions).join('\n'));
-  console.log(result);
-
-  const knownBoxes = room.finders[0].exploredMap.reduce(
-    (acc, val) => acc + val.reduce((acc2, val2) => acc2 + (val2 ? 1 : 0), 0),
-    0
+const map = [Direction.top, Direction.right, Direction.bottom, Direction.left];
+const finderProcessor: FinderProcessor = (finder, tickIndex) => {
+  console.log(
+    `Tick #${tickIndex} [${finder.relativePosition.rx} ${finder.relativePosition.ry}]`
   );
-  console.log({ knownBoxes });
-  console.log(exploredMapToStrings(room.finders[0].exploredMap).join('\n'));
-  // console.log(
-  //   mazeToStrings(
-  //     exploredMapToMaze(
-  //       room.finders[0].exploredMap,
-  //       sumDeltas(room.finders[0].exploredMapOffset, p2d(room.positions[0])),
-  //       room.maze
-  //     )
-  //   ).join('\n')
-  // );
-}
+  const direction = map[random(0, 4)];
+  return direction;
+};
 
-process.stdin.on(
-  'keypress',
-  (
-    _,
-    key: {
-      name: string;
-      ctrl: boolean;
-      meta: boolean;
-      shift: boolean;
-      sequence: string;
-      code: string;
-    }
-  ) => {
-    if (key && key.ctrl && key.name === 'c') process.stdin.pause();
+const wholeTickCallback: WholeTickCallback = currentRoom => {
+  console.log(
+    mazeToStrings(
+      currentRoom.maze,
+      currentRoom.finishPoint,
+      currentRoom.positions
+    ).join('\n')
+  );
+  /* tslint:disable-next-line*/
+  usleep(0.1 * 10 ** 6);
+};
 
-    switch (key.name) {
-      case 'up':
-        move(Direction.top);
-        break;
-      case 'right':
-        move(Direction.right);
-        break;
-      case 'down':
-        move(Direction.bottom);
-        break;
-      case 'left':
-        move(Direction.left);
-        break;
-    }
-  }
-);
+const simulationResult = runSimulation({
+  finderProcessor,
+  maxTicksCount: 50,
+  room,
+  wholeTickCallback
+});
 
-if (process.stdin.setRawMode) process.stdin.setRawMode(true);
-process.stdin.resume();
+console.log(simulationResult);
 
 export default 0;

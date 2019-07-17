@@ -56,12 +56,14 @@
     "generate-maze-ts": "^1.0.6",
     "keypress": "^0.2.1",
     "sha.js": "^2.4.11",
+    "sleep": "^6.1.0",
     "smartpathfinders": "^1.0.8"
   },
   "devDependencies": {
     "@bitjson/npm-scripts-info": "^1.0.0",
     "@types/keypress": "^2.0.30",
     "@types/readline-sync": "^1.4.3",
+    "@types/sleep": "^0.0.7",
     "ava": "2.2.0",
     "codecov": "^3.5.0",
     "cz-conventional-changelog": "^2.1.0",
